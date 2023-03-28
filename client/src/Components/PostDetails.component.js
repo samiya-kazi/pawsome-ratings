@@ -45,7 +45,7 @@ function PostDetails({ post, id, setPost }) {
         </div>
         <div className='info'>
           <h2>{post.petName}</h2>
-          <p>Pet Type: {post.petType}</p>
+          <p>Type: {post.petType}</p>
           <p>Description: {post.description}</p>
           <div className='rating'>
             <div>

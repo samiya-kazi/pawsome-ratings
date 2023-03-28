@@ -27,7 +27,7 @@ function PostCard ({ post }) {
 
       <div className='info'>
         <h3>{post.petName}</h3>
-        <p>Pet Type: {post.petType}</p>
+        <p>{post.petType}</p>
         <div className='rating'>
           <div>
           <span>{stars.map((star, index) => <img key={post._id + index} src={star}/>)}</span>
