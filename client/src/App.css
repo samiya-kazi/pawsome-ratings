@@ -15,7 +15,7 @@
 
 h1 {
   margin: 0;
-  padding: 20px;
+  padding: 20px 0 40px;
   font-family: 'Pacifico';
   color: rgb(106, 6, 106);
 }
@@ -183,6 +183,17 @@ input, textarea, select {
 
 .loading > p {
   margin: 0;
+}
+
+.filter {
+  margin-left: 20px;
+  width: 220px;
+}
+
+.filter-label {
+  margin-left: 25px;
+  font-size: large;
+  font-weight: bold;
 }
 
 /* Rating */
