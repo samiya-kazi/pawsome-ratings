@@ -2,6 +2,8 @@
 
 Simple MERN stack application where users can upload an image of their pet and other users can rate them. Used to showcase a rating system in MERN stack.
 
+![Pawesome Ratings demo](/readme-images/pawesome-ratings-demo.gif)
+
 ## Getting started
 Here are the steps to running the application locally.
 
