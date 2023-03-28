@@ -15,10 +15,10 @@ async function getAllRatingsForAPost (req, res) {
 async function addRatingToAPost (req, res) {
   try {
     const { id } = req.params;
-    const { name, email, comment, rating } = req.body;
+    const { name, comment, rating } = req.body;
 
-    if (id && name && email && rating && rating >= 0 && rating <= 5) {
-      await Rating.create({postId: id, name, email, comment, rating});
+    if (id && name && rating && rating >= 0 && rating <= 5) {
+      await Rating.create({postId: id, name, comment, rating});
       const allRatings = await Rating.find({postId: id});
 
       const totalRating = allRatings.reduce((sum, item) => sum + item.rating, 0);

@@ -39,3 +39,24 @@ export const addPost = async (petName, petType, description, imgUrl) => {
     console.log(error);
   }
 }
+
+
+export const addRating = async (postId, name, rating, comment) => {
+  try {
+
+    const body = {name, rating, comment};
+
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-type': 'application/json'
+      }
+    }
+
+    const res = await fetch(baseURL + '/rating/' + postId, options);
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
