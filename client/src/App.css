@@ -122,6 +122,10 @@ input, textarea, select {
   align-items: center;
 }
 
+.rating-field {
+  justify-content: center;
+}
+
 .rating-number {
   margin-left: 5px;
 }
