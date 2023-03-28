@@ -24,7 +24,7 @@ async function addRatingToAPost (req, res) {
       const totalRating = allRatings.reduce((sum, item) => sum + item.rating, 0);
       const avg = (totalRating / allRatings.length).toFixed(2);
 
-      const updatedPost = await Post.findByIdAndUpdate(id, {$set: {rating: avg}}, {new: true});
+      const updatedPost = await Post.findByIdAndUpdate(id, {$set: {rating: avg, numOfRatings: allRatings.length}}, {new: true});
       res.status(200).send(updatedPost);
     } else {
       res.status(400).send('Invalid parameters.');
