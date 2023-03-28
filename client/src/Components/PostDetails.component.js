@@ -1,25 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import emptyStar from '../assets/emptyStar.svg';
-import filledStar from '../assets/filledStar.svg';
+import React, { useState } from 'react';
 import { addRating } from '../Services/api-client.service';
+import StarRating from './StarRating.component';
 
 function PostDetails({ post, id, setPost, setRatings }) {
 
-  const starsArr = Array(5).fill(emptyStar);
-  const [stars, setStars] = useState(starsArr);
   const [state, setState] = useState({});
-
-  useEffect(() => {
-
-    const arr = [...starsArr];
-
-    for (let i = 0; i < Math.floor(post.rating); i++) {
-      arr[i] = filledStar
-    }
-
-    setStars(arr);
-  }, [post])
-
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -36,7 +21,7 @@ function PostDetails({ post, id, setPost, setRatings }) {
 
       const newRating = {_id: Date.now(), name, comment, rating};
       setRatings(prevState => [...prevState, newRating]);
-      
+
       event.target.reset();
     } 
   }
@@ -52,9 +37,7 @@ function PostDetails({ post, id, setPost, setRatings }) {
           <p>Type: {post.petType}</p>
           <p>Description: {post.description}</p>
           <div className='rating'>
-            <div>
-              <span>{stars.map((star, index) => <img key={post._id + index} src={star} />)}</span>
-            </div>
+            <StarRating item={post} />
             <p className='rating-number'>{post.rating} ({post.numOfRatings})</p>
           </div>
         </div>
@@ -63,6 +46,11 @@ function PostDetails({ post, id, setPost, setRatings }) {
       <hr></hr>
 
       <form className='rating-form' onSubmit={handleSubmit}>
+        {!post.numOfRatings ? 
+          <p>This little guy doesn't have any ratings 😞 Be the first to rate them!</p> 
+        : null}
+
+
         <h3>Leave a rating!</h3>
         <div className='form-field'>
           <label htmlFor='name'>Name:</label>
