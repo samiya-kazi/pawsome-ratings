@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
 import { addPost } from '../Services/api-client.service';
+import { cldUpload } from '../Services/cloudinary.service';
 import petTypes from '../utils/petTypes.json';
 
 function AddPostForm ({ setPosts }) {
 
   const [state, setState] = useState({petType: 'Dog'});
+  const [file, setFile] = useState();
 
   async function handleSubmit(event) {
     try {
       event.preventDefault();
-      const {petName, petType, description, imgUrl} = state;
-      const res = await addPost(petName, petType, description, imgUrl);
-      setPosts(prevState => [...prevState, res]);
-      event.target.reset();
+
+      const {petName, petType, description} = state;
+
+      if (file) {
+        const { secure_url } = await cldUpload(file);
+        const res = await addPost(petName, petType, description, secure_url);
+        setPosts(prevState => [...prevState, res]);
+        event.target.reset();
+      }
     } catch (error) {
       console.log(error);
     }
@@ -22,6 +29,11 @@ function AddPostForm ({ setPosts }) {
   function handleChange (event) {
     const {name, value} = event.target;
     setState(prevState => {return {...prevState, [name]: value}});
+  }
+
+  function handleUpload (event) {
+    const file = event.target.files[0]
+    setFile(file);
   }
 
   return (
@@ -47,8 +59,8 @@ function AddPostForm ({ setPosts }) {
       </div>
 
       <div className='form-field'>
-        <label htmlFor='imgUrl'>Image URL:</label>
-        <input name="imgUrl" type="url" required onChange={handleChange}/>
+        <label htmlFor='fileUpload'>Image:</label>
+        <input type="file" name='fileUpload' id="file_input" accept="image/png, image/jpeg" onChange={handleUpload}></input>
       </div>
 
       <button className='form-submit'>Submit</button>

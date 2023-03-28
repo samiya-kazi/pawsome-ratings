@@ -39,7 +39,7 @@ form {
 .form-field {
   display: flex;
   justify-content: space-between;
-  min-width: 350px;
+  min-width: 400px;
   align-items: center;
   margin: 10px 0;
 }
@@ -49,8 +49,13 @@ h2 {
 }
 
 input, textarea, select {
-  padding: 5px;
-  min-width: 200px;
+  padding: 0px;
+  width: 250px;
+  height: 45px;
+}
+
+#file_input {
+  height: fit-content;
 }
 
 .rating-form {
@@ -83,7 +88,7 @@ input, textarea, select {
   background-color: white;
   margin: 10px;
   align-items: center;
-  width: 320px;
+  width: 300px;
   border-radius: 10px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.347);
   cursor: pointer;
@@ -97,8 +102,8 @@ input, textarea, select {
 }
 
 .image {
-  width: 170px;
-  height: 170px;
+  width: 150px;
+  height: 150px;
   display: flex;
   align-items: center;
   margin: 10px;
@@ -106,8 +111,8 @@ input, textarea, select {
 
 .pet-img {
   object-fit: cover;
-  width: 170px;
-  height: 170px;
+  width: 150px;
+  height: 150px;
 }
 
 .rating {
