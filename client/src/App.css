@@ -120,12 +120,41 @@ input, textarea, select {
 .details-container {
   background-color: white;
   width: 600px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.347);
+  margin: 20px;
+}
+
+.post-page {
+  justify-content: center;
 }
 
 .details {
   display: flex;
 }
 
+.ratings-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.rating-card {
+  background-color: white;
+  margin: 10px 20px;
+  width: 500px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.347);
+}
+
+.header {
+  display: flex;
+}
+
+.user-name {
+  margin-right: 10px;
+}
 
 /* Rating */
 

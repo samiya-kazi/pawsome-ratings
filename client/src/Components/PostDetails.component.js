@@ -3,7 +3,7 @@ import emptyStar from '../assets/emptyStar.svg';
 import filledStar from '../assets/filledStar.svg';
 import { addRating } from '../Services/api-client.service';
 
-function PostDetails({ post, id, setPost }) {
+function PostDetails({ post, id, setPost, setRatings }) {
 
   const starsArr = Array(5).fill(emptyStar);
   const [stars, setStars] = useState(starsArr);
@@ -33,6 +33,10 @@ function PostDetails({ post, id, setPost }) {
     if (name && rating) {
       const updatedPost = await addRating(id, name, rating, comment);
       setPost(updatedPost);
+
+      const newRating = {_id: Date.now(), name, comment, rating};
+      setRatings(prevState => [...prevState, newRating]);
+      
       event.target.reset();
     } 
   }

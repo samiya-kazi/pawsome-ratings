@@ -20,6 +20,16 @@ export const getPostById = async (id) => {
 }
 
 
+export const getRatingstById = async (id) => {
+  try {
+    const res = await fetch(baseURL + '/rating/' + id);
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
 export const addPost = async (petName, petType, description, imgUrl) => {
   try {
 
