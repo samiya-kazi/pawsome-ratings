@@ -62,7 +62,7 @@ function PostDetails({ post, id, setPost, setRatings }) {
           <textarea name="comment" required onChange={handleChange}></textarea>
         </div>
 
-        <div className="rate">
+        <div className="rate form-field">
           <input type="radio" id="star5" name="rating" value="5" onChange={handleChange}/>
           <label htmlFor="star5" title="text">5 stars</label>
           <input type="radio" id="star4" name="rating" value="4" onChange={handleChange}/>
