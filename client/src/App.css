@@ -165,6 +165,22 @@ input, textarea, select {
   margin-right: 10px;
 }
 
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading > img {
+  height: 50px;
+  margin: 0;
+}
+
+
+.loading > p {
+  margin: 0;
+}
+
 /* Rating */
 
 .rate {

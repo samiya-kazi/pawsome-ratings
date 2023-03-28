@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { addPost } from '../Services/api-client.service';
 import { cldUpload } from '../Services/cloudinary.service';
 import petTypes from '../utils/petTypes.json';
+import pawAnimation from '../assets/pawprint-animation.gif'
 
 function AddPostForm ({ setPosts }) {
 
   const [state, setState] = useState({petType: 'Dog'});
   const [file, setFile] = useState();
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(event) {
     try {
@@ -15,10 +17,12 @@ function AddPostForm ({ setPosts }) {
       const {petName, petType, description} = state;
 
       if (file) {
+        setLoading(true);
         const { secure_url } = await cldUpload(file);
         const res = await addPost(petName, petType, description, secure_url);
         setPosts(prevState => [...prevState, res]);
         event.target.reset();
+        setLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -64,6 +68,14 @@ function AddPostForm ({ setPosts }) {
       </div>
 
       <button className='form-submit'>Submit</button>
+
+      {loading ? 
+        <div className='loading'>
+          <img src={pawAnimation} />
+          <p>Submitting...</p>
+          <img src={pawAnimation} />
+        </div>
+      : null}
     </form>
   )
 }
